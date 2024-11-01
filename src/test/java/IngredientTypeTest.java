@@ -7,8 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class IngredientTypeTest {
-    private IngredientType ingredientType;
-    private String ingredientTypeName;
+    private final IngredientType ingredientType;
+    private final String ingredientTypeName;
 
     public IngredientTypeTest(String ingredientTypeName, IngredientType ingredientType) {
         this.ingredientType = ingredientType;
@@ -16,7 +16,7 @@ public class IngredientTypeTest {
     }
 
     @Parameterized.Parameters(name = "Ingredient type {0}")
-    public static Object[][] ingredientTypeParameters() {
+    public static Object[][] getIngredientTypeParameters() {
         return new Object[][]{
                 {"SAUCE", IngredientType.SAUCE},
                 {"FILLING", IngredientType.FILLING}

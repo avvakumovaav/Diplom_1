@@ -29,7 +29,7 @@ public class BunTest {
                 { "Bun2", 45.0f},
                 { "Bun3", 46f},
                 { "Bun4", -0.5f},
-                { "Bun5", 0f},
+                { "Bun5", 0f}
         };
     }
 
