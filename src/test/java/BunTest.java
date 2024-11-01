@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.MockitoAnnotations;
 import praktikum.Bun;
 
 import static org.junit.Assert.assertEquals;
@@ -19,11 +18,11 @@ public class BunTest {
     }
 
     @Before
-    public void setUp() {
+    public void init() {
         bun = new Bun(name, price);
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "name, price: {0}, {1}\n")
     public static Object[][] getBunData() {
         return new Object[][]{
                 { "Bun1", 12.3f},
@@ -36,13 +35,13 @@ public class BunTest {
 
     @Test
     public void getNameTest() {
-        assertEquals("Название булочки не соответствует ожидаемому", name, bun.getName());
+        assertEquals("Invalid bun name", name, bun.getName());
 
     }
 
     @Test
     public void getPriceTest() {
         var delta = 0.1f;
-        assertEquals("Цена булочки не соответствует ожидаемому", price, bun.getPrice(), delta);
+        assertEquals("Invalid bun price", price, bun.getPrice(), delta);
     }
 }
