@@ -2,10 +2,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import praktikum.Ingredient;
-import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
+import praktikum.Ingredient;
+import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
@@ -14,8 +14,7 @@ public class IngredientTest {
     private final String name;
     private final float price;
 
-    public IngredientTest(Ingredient ingredient, IngredientType ingredientType, String name, float price) {
-        this.ingredient = ingredient;
+    public IngredientTest(IngredientType ingredientType, String name, float price) {
         this.ingredientType = ingredientType;
         this.name = name;
         this.price = price;

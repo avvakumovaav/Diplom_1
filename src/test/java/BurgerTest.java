@@ -109,6 +109,4 @@ public class BurgerTest {
                 burger.getPrice());
         assertEquals("Invalid getReceipt method", expectedReceipt, burger.getReceipt());
     }
-
-
 }
