@@ -92,5 +92,23 @@ public class BurgerTest {
         assertEquals("Invalid getPrice method", expectedBurgerPrice, actualBurgerPrice, delta);
     }
 
+    @Test
+    public void testForGetReceiptMethod(){
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+        String expectedReceipt = String.format("(==== %s ====)%n" +
+                        "= %s %s =%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n" +
+                        "%nPrice: %.6f%n",
+                bun.getName(),
+                ingredient1.getType().toString().toLowerCase(), ingredient1.getName(),
+                ingredient2.getType().toString().toLowerCase(), ingredient2.getName(),
+                bun.getName(),
+                burger.getPrice());
+        assertEquals("Invalid getReceipt method", expectedReceipt, burger.getReceipt());
+    }
+
 
 }
