@@ -60,5 +60,6 @@ public class BurgerTest {
     public void addIngredientTest() {
         burger.addIngredient(listOfIngredients.get(0));
         assertEquals("Invalid ingredient list size", 1, burger.ingredients.size());
+        assertEquals(ingredient1, burger.ingredients.get(0));
     }
 }
