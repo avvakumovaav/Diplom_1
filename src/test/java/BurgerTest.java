@@ -71,4 +71,13 @@ public class BurgerTest {
         assertEquals("Invalid removeIngredient method", 1, burger.ingredients.size());
         assertEquals("Invalid removeIngredient method", ingredient2, burger.ingredients.get(0));
     }
+
+    @Test
+    public void moveIngredientTest() {
+        burger.addIngredient(listOfIngredients.get(0));
+        burger.addIngredient(listOfIngredients.get(1));
+        burger.addIngredient(listOfIngredients.get(2));
+        burger.moveIngredient(2, 0);
+        assertEquals("Invalid moveIngredient method", ingredient3, burger.ingredients.get(0));
+    }
 }
