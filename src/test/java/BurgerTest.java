@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -22,7 +21,7 @@ public class BurgerTest {
     @Mock
     Bun bun;
     private final String bunName = "Bun1";
-    private final float bunPrice = 12.34f;
+    private final float bunPrice = 1f;
     @Mock
     Ingredient ingredient1, ingredient2, ingredient3;
 
@@ -37,15 +36,15 @@ public class BurgerTest {
         when(bun.getPrice()).thenReturn(bunPrice);
 
         when(ingredient1.getName()).thenReturn("Ingredient1");
-        when(ingredient1.getPrice()).thenReturn(45.0f);
+        when(ingredient1.getPrice()).thenReturn(1f);
         when(ingredient1.getType()).thenReturn(IngredientType.FILLING);
 
         when(ingredient2.getName()).thenReturn("Ingredient2");
-        when(ingredient2.getPrice()).thenReturn(67f);
+        when(ingredient2.getPrice()).thenReturn(2f);
         when(ingredient2.getType()).thenReturn(IngredientType.SAUCE);
 
         when(ingredient2.getName()).thenReturn("Ingredient3");
-        when(ingredient2.getPrice()).thenReturn(89.99f);
+        when(ingredient2.getPrice()).thenReturn(3f);
         when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
         listOfIngredients = Arrays.asList(ingredient1, ingredient2, ingredient3);
     }
@@ -80,4 +79,18 @@ public class BurgerTest {
         burger.moveIngredient(2, 0);
         assertEquals("Invalid moveIngredient method", ingredient3, burger.ingredients.get(0));
     }
+
+    @Test
+    public void getPriceTest() {
+        float expectedBurgerPrice = (bun.getPrice() * 2) +
+                ingredient1.getPrice() +
+                ingredient2.getPrice();
+        burger.setBuns(bun);
+        burger.addIngredient(listOfIngredients.get(0));
+        burger.addIngredient(listOfIngredients.get(1));
+        float actualBurgerPrice = burger.getPrice();
+        assertEquals("Invalid getPrice method", expectedBurgerPrice, actualBurgerPrice, delta);
+    }
+
+
 }
