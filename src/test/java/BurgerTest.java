@@ -26,7 +26,7 @@ public class BurgerTest {
     @Mock
     Ingredient ingredient1, ingredient2, ingredient3;
 
-    private @Mock List<Ingredient> listOfIngredients = Arrays.asList(ingredient1, ingredient2, ingredient3);
+    private @Mock List<Ingredient> listOfIngredients;
     float delta = 0.1f;
 
     @Before
@@ -43,17 +43,22 @@ public class BurgerTest {
         when(ingredient2.getName()).thenReturn("Ingredient2");
         when(ingredient2.getPrice()).thenReturn(67f);
         when(ingredient2.getType()).thenReturn(IngredientType.SAUCE);
+        listOfIngredients = Arrays.asList(ingredient1, ingredient2);
+
+        when(ingredient2.getName()).thenReturn("Ingredient3");
+        when(ingredient2.getPrice()).thenReturn(89.99f);
+        when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
     }
 
     @Test
     public void setBunTest() {
         burger.setBuns(bun);
-        assertEquals("Invalid bun name", bunName, bun.getName());
-        assertEquals("Invalid bun price", bunPrice, bun.getPrice(), delta);
+        assertEquals("Invalid setBuns method",bun, burger.bun);
     }
 
     @Test
     public void addIngredientTest() {
-
+        burger.addIngredient(ingredient3);
+        assertEquals("Invalid ingredient list size", 3, listOfIngredients.size());
     }
 }
