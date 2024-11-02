@@ -43,11 +43,11 @@ public class BurgerTest {
         when(ingredient2.getName()).thenReturn("Ingredient2");
         when(ingredient2.getPrice()).thenReturn(67f);
         when(ingredient2.getType()).thenReturn(IngredientType.SAUCE);
-        listOfIngredients = Arrays.asList(ingredient1, ingredient2);
 
         when(ingredient2.getName()).thenReturn("Ingredient3");
         when(ingredient2.getPrice()).thenReturn(89.99f);
         when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
+        listOfIngredients = Arrays.asList(ingredient1, ingredient2, ingredient3);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BurgerTest {
 
     @Test
     public void addIngredientTest() {
-        burger.addIngredient(ingredient3);
-        assertEquals("Invalid ingredient list size", 3, listOfIngredients.size());
+        burger.addIngredient(listOfIngredients.get(0));
+        assertEquals("Invalid ingredient list size", 1, burger.ingredients.size());
     }
 }
